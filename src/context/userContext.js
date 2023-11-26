@@ -1,11 +1,17 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 
 const UserContext = createContext()
 
 const Wrapper = (props) => {
+    const [useContext, setUserContext] = useState({
+        greeting: "Hello",
+        changeGreeting: (newGreeting) => {
+            setUserContext((prevContext) =>  ({ ...prevContext, greeting: newGreeting}));
+        },
 
-    const greeting = "Hello"
+    });
+
   
     return (
         <UserContext.Provider value={{ greeting }}>
